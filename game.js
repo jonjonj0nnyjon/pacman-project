@@ -40,6 +40,10 @@ let map = [
 
 //General Variables
 let fps = 30;
+const directionRight = 4;
+const directionUp = 3;
+const directionLeft = 2;
+const directionDown = 1;
 // Color Variables
 let wallColor = "#342DCA";
 let wallInnerColor = "black";
