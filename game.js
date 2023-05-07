@@ -56,7 +56,7 @@ let update = () => {
 let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 /* Draw Map */
-let wallSpaceWidth = oneBlockSize / 1.3;
+let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 
 let draw = () => {
@@ -75,6 +75,7 @@ let drawWalls = () => {
              oneBlockSize, 
              wallColor)
           };
+          // Horizontal Walls
           if (j > 0 && map[i][j - 1] == 1) {
             createRect(
                 j * oneBlockSize,
@@ -89,6 +90,22 @@ let drawWalls = () => {
                 i * oneBlockSize + wallOffset,
                 wallSpaceWidth + wallOffset,
                 wallSpaceWidth,
+                wallInnerColor)
+          }; //Vertical Walls
+          if (i > 0 && map[i - 1][j] == 1) {
+            createRect(
+                j * oneBlockSize + wallOffset,
+                i * oneBlockSize,
+                wallSpaceWidth,
+                wallSpaceWidth + wallOffset,
+                wallInnerColor)
+          };
+          if (i < map.length - 1 && map[i + 1][j] == 1) {
+            createRect(
+                j * oneBlockSize + wallOffset,
+                i * oneBlockSize + wallOffset,
+                wallSpaceWidth,
+                wallSpaceWidth + wallOffset,
                 wallInnerColor)
           };
     } 
