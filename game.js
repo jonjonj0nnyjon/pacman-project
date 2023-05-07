@@ -1,19 +1,16 @@
 /* Initialize Level Assets */
 const canvas = document.getElementById("canvas");
-const canvasContext = canvas.getContext("2nd");
+const canvasContext = canvas.getContext("2d");
 
 /* Initialize Charactor Assets */
 const pacmanFrames = document.getElementById("animation");
 const ghostFrames = document.getElementById("ghosts");
 
-/* Draw Map */
+/* Initialize Map */
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
-    canvasContext.fillRect = (x, y, width, height);
+    canvasContext.fillRect(x, y, width, height);
 };
-
-let oneBlockSize = 20;
-let wallColor = "blue";
 
 let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -43,6 +40,8 @@ let map = [
 
 /* Game Logic */
 let fps = 30;
+let oneBlockSize = 20;
+let wallColor = "#342DCA";
 
 let gameLoop = () => {
     update()
@@ -53,20 +52,25 @@ let update = () => {
 
 };
 
-let draw = () => {
-    createRect(0, 0, canvas.width, canvas.height, "black");
+let gameInterval = setInterval(gameLoop, 1000 / fps);
 
+/* Draw Map */
+let draw = () => {
+    createRect(0, 0, canvas.width, canvas.height, "white");
     drawWalls();
 };
-
-let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 let drawWalls = () => {
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[0].length; j++) {
-        if (map[i][j] == 1) { //then it's a wall
-          createRect(j * oneBlockSize, i * oneBlockSize, oneBlockSize, oneBlockSize, wallColor);
-        }
+        if (map[i][j] == 1) { //confirms wall
+          createRect(
+             j * oneBlockSize, 
+             i * oneBlockSize, 
+             oneBlockSize, 
+             oneBlockSize, 
+             wallColor)
+          };
     } 
   }
 };
