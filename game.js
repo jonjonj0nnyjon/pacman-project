@@ -38,22 +38,17 @@ let map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
-/* Game Logic */
-//
-//
-
-/* Variables */
 //General Variables
 let fps = 30;
-// Colors
+// Color Variables
 let wallColor = "#342DCA";
 let wallInnerColor = "black";
-// Block Design
+// Block Variables
 let oneBlockSize = 20;
 let wallSpaceWidth = oneBlockSize / 1.5;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 
-// Main Loop
+// Main Game Loop
 let gameLoop = () => {
     update()
     draw() 
@@ -102,7 +97,8 @@ let drawWalls = () => {
                 wallSpaceWidth + wallOffset,
                 wallSpaceWidth,
                 wallInnerColor)
-          }; // Creates Vertical Walls
+          }; 
+          // Creates Vertical Walls
           if (i > 0 && map[i - 1][j] == 1) {
             createRect(
                 j * oneBlockSize + wallOffset,
