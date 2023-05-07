@@ -42,6 +42,7 @@ let map = [
 let fps = 30;
 let oneBlockSize = 20;
 let wallColor = "#342DCA";
+let wallInnerColor = "black";
 
 let gameLoop = () => {
     update()
@@ -55,8 +56,11 @@ let update = () => {
 let gameInterval = setInterval(gameLoop, 1000 / fps);
 
 /* Draw Map */
+let wallSpaceWidth = oneBlockSize / 1.3;
+let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
+
 let draw = () => {
-    createRect(0, 0, canvas.width, canvas.height, "white");
+    createRect(0, 0, canvas.width, canvas.height, "black");
     drawWalls();
 };
 
@@ -71,6 +75,14 @@ let drawWalls = () => {
              oneBlockSize, 
              wallColor)
           };
+          if (j > 0 && map[i][j - 1] == 1) {
+            createRect(
+                j * oneBlockSize,
+                i * oneBlockSize + wallOffset,
+                wallSpaceWidth + wallOffset,
+                wallSpaceWidth,
+                wallInnerColor)
+          }
     } 
   }
 };
