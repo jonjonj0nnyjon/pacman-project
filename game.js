@@ -39,35 +39,46 @@ let map = [
 ];
 
 /* Game Logic */
+//
+//
+
+/* Variables */
+//General Variables
 let fps = 30;
-let oneBlockSize = 20;
+// Colors
 let wallColor = "#342DCA";
 let wallInnerColor = "black";
+// Block Design
+let oneBlockSize = 20;
+let wallSpaceWidth = oneBlockSize / 1.5;
+let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 
+// Main Loop
 let gameLoop = () => {
     update()
     draw() 
 };
 
+// Update Screen
 let update = () => {
 
 };
 
-let gameInterval = setInterval(gameLoop, 1000 / fps);
-
-/* Draw Map */
-let wallSpaceWidth = oneBlockSize / 1.5;
-let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
-
+// Draw Map
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, "black");
     drawWalls();
 };
 
+// Game Clock
+let gameInterval = setInterval(gameLoop, 1000 / fps);
+
+/* Map Logic */
 let drawWalls = () => {
   for (let i = 0; i < map.length; i++) {
     for (let j = 0; j < map[0].length; j++) {
-        if (map[i][j] == 1) { //confirms wall
+        // Confirms if it's a wall
+        if (map[i][j] == 1) {
           createRect(
              j * oneBlockSize, 
              i * oneBlockSize, 
@@ -75,7 +86,7 @@ let drawWalls = () => {
              oneBlockSize, 
              wallColor)
           };
-          // Horizontal Walls
+          // Creates Horizontal Walls
           if (j > 0 && map[i][j - 1] == 1) {
             createRect(
                 j * oneBlockSize,
@@ -91,7 +102,7 @@ let drawWalls = () => {
                 wallSpaceWidth + wallOffset,
                 wallSpaceWidth,
                 wallInnerColor)
-          }; //Vertical Walls
+          }; // Creates Vertical Walls
           if (i > 0 && map[i - 1][j] == 1) {
             createRect(
                 j * oneBlockSize + wallOffset,
