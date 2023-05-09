@@ -6,6 +6,8 @@ class Pacman {
         this.height = height;
         this.speed = speed;
         this.direction = directionRight;
+        this.currentFrame = 1;
+        this.frameCount = 7;
 
     };
 
@@ -78,7 +80,7 @@ class Pacman {
 
     };
 
-    changeAnimation() {
+    changeAnimation() { // working here
 
     };
 
