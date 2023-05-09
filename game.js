@@ -3,8 +3,8 @@ const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 
 /* Initialize Charactor Assets */
-const pacmanFrames = document.getElementById("animation");
-const ghostFrames = document.getElementById("ghosts");
+const pacmanFrames = document.getElementById("animations");
+const ghostFrames = document.getElementById("ghost");
 
 /* Initialize Map */
 let createRect = (x, y, width, height, color) => {
@@ -54,8 +54,8 @@ let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 
 // Main Game Loop
 let gameLoop = () => {
-    update()
-    draw() 
+    update();
+    draw();
 };
 
 // Update Screen

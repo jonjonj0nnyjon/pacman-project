@@ -118,13 +118,6 @@ class Pacman {
         canvasContext.restore();
     };
 
-// NEED TO FIX!
-
-/* caught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
-    at Pacman.draw (http://127.0.0.1:5500/pacman.js:106:23)
-    at draw (http://127.0.0.1:5500/game.js:71:12)
-    at gameLoop (http://127.0.0.1:5500/game.js:58:5)d */
-
     getMapX() {
         return parseInt(this.x / oneBlockSize)
     };
