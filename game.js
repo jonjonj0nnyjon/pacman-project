@@ -60,13 +60,15 @@ let gameLoop = () => {
 
 // Update Screen
 let update = () => {
+    pacman.moveProcess()
 
 };
 
-// Draw Map
+// Draw Map and Characters
 let draw = () => {
     createRect(0, 0, canvas.width, canvas.height, "black");
     drawWalls();
+    pacman.draw();
 };
 
 // Game Clock
@@ -119,6 +121,19 @@ let drawWalls = () => {
                 wallSpaceWidth + wallOffset,
                 wallInnerColor)
           };
-    } 
-  }
+    }; 
+  };
 };
+
+let createNewPacman = () => {
+    pacman = new Pacman(
+        oneBlockSize, 
+        oneBlockSize, 
+        oneBlockSize, 
+        oneBlockSize,
+        oneBlockSize / 5
+    );
+};
+
+createNewPacman();
+gameLoop();

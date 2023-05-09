@@ -9,6 +9,10 @@ class Pacman {
         this.currentFrame = 1;
         this.frameCount = 7;
 
+        setInterval(() => {
+            this.changeAnimation();
+        }, 100)
+
     };
 
     moveProcess() {
@@ -80,13 +84,46 @@ class Pacman {
 
     };
 
-    changeAnimation() { // working here
+    changeAnimation() {
+        this.currentFrame = this.currentFrame == this.frameCount ? 1: this.currentFrame + 1;
 
     };
 
     draw() {
+        canvasContext.save()
+        canvasContext.translate(
+            this.x + oneBlockSize / 2, 
+            this.y + oneBlockSize / 2
+            );
+        
+        canvasContext.rotate((this.direction * 90 * Math.PI) / 180);
 
+        canvasContext.translate(
+            -this.x - oneBlockSize / 2, 
+            -this.y - oneBlockSize / 2
+            );
+
+        canvasContext.drawImage(
+            pacmanFrames,
+            (this.currentFrame - 1) / oneBlockSize,
+            0,
+            oneBlockSize,
+            oneBlockSize,
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        );
+
+        canvasContext.restore();
     };
+
+// NEED TO FIX!
+
+/* caught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement provided is in the 'broken' state.
+    at Pacman.draw (http://127.0.0.1:5500/pacman.js:106:23)
+    at draw (http://127.0.0.1:5500/game.js:71:12)
+    at gameLoop (http://127.0.0.1:5500/game.js:58:5)d */
 
     getMapX() {
         return parseInt(this.x / oneBlockSize)
